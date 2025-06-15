@@ -10,10 +10,10 @@
     "customManagers:githubActionsVersions",
     ":automergeRequireAllStatusChecks",
     ":disableRateLimiting",
+    ":enableVulnerabilityAlerts",
     ":gitSignOff",
     ":ignoreUnstable",
-    ":timezone(Europe/London)",
-    ":vulnerabilityAlerts"
+    ":timezone(Europe/London)"
   ],
   "labels": ["dependencies"],
   "onboarding": true,
