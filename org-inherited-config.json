@@ -17,19 +17,31 @@
   "packageRules": [
     {
       "matchManagers": ["dockerfile"],
-      "labels": ["docker"]
+      "labels": [
+        "dependencies",
+        "docker"
+    ]
     },
     {
       "matchManagers": ["github-actions"],
-      "labels": ["github_actions"]
+      "labels": [
+        "dependencies",
+        "github_actions"
+      ]
     },
     {
       "matchManagers": ["npm"],
-      "labels": ["javascript"]
+      "labels": [
+        "dependencies",
+        "javascript"
+      ]
     },
     {
       "matchManagers": ["nuget"],
-      "labels": [".NET"]
+      "labels": [
+        "dependencies",
+        ".NET"
+      ]
     },
     {
       "extends": ["monorepo:dotnet"],
