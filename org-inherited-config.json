@@ -8,41 +8,29 @@
     "config:best-practices",
     ":automergeRequireAllStatusChecks",
     ":disableRateLimiting",
-    ":enableVulnerabilityAlertsWithLabel(security)",
     ":gitSignOff",
     ":ignoreUnstable",
-    ":timezone(Europe/London)"
+    ":timezone(Europe/London)",
+    ":vulnerabilityAlerts"
   ],
   "labels": ["dependencies"],
   "onboarding": true,
   "packageRules": [
     {
       "matchManagers": ["dockerfile"],
-      "labels": [
-        "dependencies",
-        "docker"
-      ]
+      "addLabels": ["docker"]
     },
     {
       "matchManagers": ["github-actions"],
-      "labels": [
-        "dependencies",
-        "github_actions"
-      ]
+      "addLabels": ["github_actions"]
     },
     {
       "matchManagers": ["npm"],
-      "labels": [
-        "dependencies",
-        "javascript"
-      ]
+      "addLabels": ["javascript"]
     },
     {
       "matchManagers": ["nuget"],
-      "labels": [
-        "dependencies",
-        ".NET"
-      ]
+      "addLabels": [".NET"]
     },
     {
       "extends": ["monorepo:dotnet"],
@@ -52,7 +40,8 @@
     }
   ],
   "requireConfig": "required",
-  "schedule": [
-    "* 5 * * MON-FRI"
-  ]
+  "schedule": ["* 5 * * MON-FRI"],
+  "vulnerabilityAlerts": {
+    "addLabels": ["security"]
+  }
 }
