@@ -1,2 +1,3 @@
-# renovate-config
-Configuration for renovate
+# Renovate Configuration
+
+Configuration for [renovate](https://docs.renovatebot.com/).
