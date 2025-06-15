@@ -10,11 +10,27 @@
     ":enableVulnerabilityAlertsWithLabel(security)",
     ":gitSignOff",
     ":ignoreUnstable",
-    ":labels(dependencies, {{{manager}}})",
     ":timezone(Europe/London)"
   ],
+  "labels": ["dependencies"],
   "onboarding": true,
   "packageRules": [
+    {
+      "matchManagers": ["dockerfile"],
+      "labels": ["docker"]
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "labels": ["github_actions"]
+    },
+    {
+      "matchManagers": ["npm"],
+      "labels": ["javascript"]
+    },
+    {
+      "matchManagers": ["nuget"],
+      "labels": [".NET"]
+    },
     {
       "extends": ["monorepo:dotnet"],
       "description": ["Disable major version updates for .NET"],
