@@ -1,12 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "automerge": false,
+  "dependencyDashboard": false,
   "extends": [
-    "config:recommended"
-  ],
-  "labels": [
-    "dependencies",
-    "{{{manager}}}"
+    "config:best-practices",
+    ":automergeRequireAllStatusChecks",
+    ":disableRateLimiting",
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    ":gitSignOff",
+    ":ignoreUnstable",
+    ":labels(dependencies, {{{manager}}})",
+    ":timezone(Europe/London)"
   ],
   "onboarding": true,
   "packageRules": [
@@ -17,10 +21,5 @@
       "enabled": false
     }
   ],
-  "prConcurrentLimit": 0,
-  "requireConfig": "required",
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "labels": ["security"]
-  }
+  "requireConfig": "required"
 }
