@@ -51,5 +51,8 @@
       "enabled": false
     }
   ],
-  "requireConfig": "required"
+  "requireConfig": "required",
+  "schedule": [
+    "30 5 * * MON-FRI"
+  ]
 }
