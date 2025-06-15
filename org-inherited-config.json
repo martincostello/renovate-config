@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "additionalBranchPrefix": "/{{manager}}",
+  "additionalBranchPrefix": "{{manager}}/",
   "automerge": false,
   "commitBodyTable": true,
   "dependencyDashboard": false,
