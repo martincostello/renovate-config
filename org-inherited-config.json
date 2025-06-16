@@ -42,7 +42,7 @@
     }
   ],
   "requireConfig": "required",
-  "schedule": ["* 5 * * MON-FRI"],
+  "schedule": ["* 5-22 * * MON-FRI"],
   "vulnerabilityAlerts": {
     "addLabels": ["security"]
   }
