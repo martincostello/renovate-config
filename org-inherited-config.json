@@ -15,6 +15,12 @@
     ":ignoreUnstable",
     ":timezone(Europe/London)"
   ],
+  "html": {
+    "managerFilePatterns": [
+      "/^.*\\.cshtml$/",
+      "/^.*\\.razor$/"
+    ]
+  },
   "labels": ["dependencies"],
   "onboarding": true,
   "packageRules": [
