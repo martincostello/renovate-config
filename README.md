@@ -1,3 +1,3 @@
 # Renovate Configuration
 
-Configuration for [renovate](https://docs.renovatebot.com/).
+Configuration for [Renovate](https://docs.renovatebot.com/).
