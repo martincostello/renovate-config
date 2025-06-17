@@ -3,6 +3,7 @@
   "additionalBranchPrefix": "{{manager}}/",
   "automerge": false,
   "commitBodyTable": true,
+  "commitMessageAction": "Bump",
   "dependencyDashboard": false,
   "extends": [
     "config:best-practices",
