@@ -60,7 +60,7 @@
     },
     {
       "matchPackageNames": ["/^microsoft\\.crank.*/"],
-      "description": "Group updates for Microsoft.Crank",
+      "description": ["Group updates for Microsoft.Crank"],
       "groupName": "Microsoft.Crank"
     }
   ],
