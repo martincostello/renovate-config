@@ -54,6 +54,11 @@
       "enabled": false
     },
     {
+      "extends": ["monorepo:dotnet"],
+      "description": ["Cooldown on .NET updates to maximize batching"],
+      "minimumReleaseAge": "1 day"
+    },
+    {
       "matchDepNames": ["Microsoft.DotNet.XliffTasks"],
       "description": ["Only update Microsoft.DotNet.XliffTasks once a week"],
       "schedule": ["* 5-21 * * MON"]
