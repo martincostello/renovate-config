@@ -48,6 +48,11 @@
       "enabled": false
     },
     {
+      "extends": ["monorepo:opentelemetry-dotnet", "monorepo:opentelemetry-dotnet-contrib"],
+      "description": ["Allow prerelease versions of .NET OpenTelemetry packages"],
+      "ignoreUnstable": false
+    },
+    {
       "extends": ["monorepo:dotnet"],
       "description": ["Disable major version updates for .NET"],
       "matchUpdateTypes": ["major"],
