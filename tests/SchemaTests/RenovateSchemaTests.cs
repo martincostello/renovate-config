@@ -46,6 +46,7 @@ public static class RenovateSchemaTests
 
         AssertDescriptions(configuration, "$");
         AssertRegularExpressions(configuration, "$");
+        AssertJson(configurationJson);
     }
 
     private static void AssertDescriptions(JToken token, string path)
@@ -76,6 +77,9 @@ public static class RenovateSchemaTests
             }
         }
     }
+
+    private static void AssertJson(string json)
+        => Should.NotThrow(() => System.Text.Json.JsonDocument.Parse(json), "Invalid JSON configuration.");
 
     private static void AssertRegularExpressions(JToken token, string path)
     {
