@@ -1,7 +1,18 @@
 <Solution>
-  <Configurations>
-    <Platform Name="Any CPU" />
-  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path=".markdownlint.json" />
+    <File Path="build.ps1" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="exclusion.dic" />
+    <File Path="global.json" />
+    <File Path="LICENSE" />
+    <File Path="NuGet.config" />
+    <File Path="org-inherited-config.json" />
+    <File Path="README.md" />
+  </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/SchemaTests/SchemaTests.csproj" />
   </Folder>
