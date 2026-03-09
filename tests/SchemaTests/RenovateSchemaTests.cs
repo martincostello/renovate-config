@@ -15,7 +15,7 @@ public static class RenovateSchemaTests
         // Arrange
         var cancellationToken = TestContext.Current.CancellationToken;
         var configurationFile = "org-inherited-config.json";
-        var schemaUrl = "https://docs.renovatebot.com/renovate-global-schema.json";
+        var schemaUrl = "https://docs.renovatebot.com/renovate-inherited-schema.json";
 
         var directory = new DirectoryInfo(".");
 
@@ -37,16 +37,42 @@ public static class RenovateSchemaTests
         var configuration = JToken.Parse(configurationJson);
 
         // Act
-        var actual = configuration.IsValid(schema, out IList<string> errors);
+        var actual = configuration.IsValid(schema, out IList<ValidationError> errors);
 
         // Assert
         errors.ShouldNotBeNull();
-        errors.ShouldBeEmpty();
+        errors.ShouldBeEmpty(string.Join(Environment.NewLine, errors.Select((p) => FormatValidationError(p))));
         actual.ShouldBeTrue();
 
         AssertDescriptions(configuration, "$");
         AssertRegularExpressions(configuration, "$");
         AssertJson(configurationJson);
+
+        static string FormatValidationError(ValidationError error, string indent = "")
+        {
+            var builder = new StringBuilder();
+
+            Format(error, builder, indent);
+
+            return builder.ToString();
+
+            static void Format(ValidationError error, StringBuilder builder, string indent = "")
+            {
+                builder.AppendLine(CultureInfo.InvariantCulture, $"{indent} Message: {error.Message}");
+                builder.AppendLine(CultureInfo.InvariantCulture, $"{indent}    Path: {error.Path}");
+                builder.AppendLine(CultureInfo.InvariantCulture, $"{indent}SchemaId: {error.SchemaId}");
+
+                if (error.Value != null)
+                {
+                    builder.AppendLine(CultureInfo.InvariantCulture, $"{indent}   Value: {error.Value}");
+                }
+
+                foreach (var child in error.ChildErrors)
+                {
+                    Format(child, builder, indent + "  ");
+                }
+            }
+        }
     }
 
     private static void AssertDescriptions(JToken token, string path)
