@@ -15,7 +15,7 @@ public static class RenovateSchemaTests
         // Arrange
         var cancellationToken = TestContext.Current.CancellationToken;
         var configurationFile = "org-inherited-config.json";
-        var schemaUrl = "https://docs.renovatebot.com/renovate-global-schema.json";
+        var schemaUrl = "https://docs.renovatebot.com/renovate-inherited-schema.json";
 
         var directory = new DirectoryInfo(".");
 
