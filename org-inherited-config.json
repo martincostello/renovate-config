@@ -64,6 +64,7 @@
     {
       "extends": ["monorepo:dotnet"],
       "description": ["Cooldown on .NET updates to maximize batching"],
+      "matchManagers": ["nuget"],
       "minimumReleaseAge": "1 day"
     },
     {
