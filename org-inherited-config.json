@@ -24,7 +24,7 @@
   },
   "labels": ["dependencies"],
   "lockFileMaintenance": {
-    "schedule": ["* 0-4 1 * *"]
+    "enabled": false
   },
   "onboarding": true,
   "packageRules": [
