@@ -7,7 +7,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Update GitHub runner labels in workflow runs-on fields and matrix values",
+      "description": ["Update GitHub runner labels in workflow runs-on fields and matrix values"],
       "fileMatch": [
         "^\\.github/workflows/.+\\.ya?ml$"
       ],
