@@ -4,6 +4,20 @@
   "automerge": false,
   "commitBodyTable": true,
   "commitMessageAction": "Bump",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update GitHub runner labels in workflow runs-on fields and matrix values",
+      "fileMatch": [
+        "^\\.github/workflows/.+\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>github-runners) depName=(?<depName>[^\\s]+)(?: versioning=(?<versioning>[^\\s]+))?\\s+[A-Za-z0-9_-]+:\\s*(?<currentValue>[A-Za-z0-9._-]+)",
+        "# renovate: datasource=(?<datasource>github-runners) depName=(?<depName>[^\\s]+)(?: versioning=(?<versioning>[^\\s]+))?\\s+-\\s*(?<currentValue>[A-Za-z0-9._-]+)"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}github-runner{{/if}}"
+    }
+  ],
   "dependencyDashboard": false,
   "extends": [
     "config:best-practices",
