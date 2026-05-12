@@ -90,6 +90,12 @@
       "matchPackageNames": ["/^microsoft\\.crank.*/"],
       "description": ["Group updates for Microsoft.Crank"],
       "groupName": "Microsoft.Crank"
+    },
+    {
+      "extends": ["monorepo:openapi-dotnet"],
+      "description": ["Disable major version updates for OpenAPI.NET"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     }
   ],
   "requireConfig": "required",
