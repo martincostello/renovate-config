@@ -15,6 +15,21 @@
       "matchStrings": [
         "# renovate:\\s*datasource=(?<datasource>github-runners)(?:\\s+[A-Za-z][A-Za-z0-9_-]*=[^\\s]+)*?(?:\\s+versioning=(?<versioning>[^\\s]+))?(?:\\s+[A-Za-z][A-Za-z0-9_-]*=[^\\s]+)*\\s*\\r?\\n\\s*(?:-\\s*)?(?:[A-Za-z0-9_-]+:\\s*)?['\"]?(?<depName>[a-zA-Z]+)-(?<currentValue>[A-Za-z0-9._-]+)['\"]?"
       ]
+    },
+    {
+      "customType": "regex",
+      "description": ["Update pinned GitHub actions with prefixed tag names"],
+      "managerFilePatterns": [
+        "/^\\.github\\/workflows\\/.*\\.ya?ml$/",
+        "/(^|/)action\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "uses:\\s+(?<depName>(?<packageName>[^\\s#]+?)\\/actions\\/(?<actionName>[^@\\s]+))@(?<currentDigest>[a-f0-9]{40})\\s+#\\s+(?<currentValue>(?<actionTagPrefix>\\k<actionName>)\\/v(?<currentVersion>\\d+\\.\\d+\\.\\d+))"
+      ],
+      "autoReplaceStringTemplate": "uses: {{depName}}@{{newDigest}} # {{newValue}}",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^[^/]+\\/v(?<version>.*)$",
+      "versioningTemplate": "semver"
     }
   ],
   "dependencyDashboard": false,
