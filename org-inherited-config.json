@@ -24,11 +24,11 @@
         "/(^|/)action\\.ya?ml$/"
       ],
       "matchStrings": [
-        "uses:\\s+(?<depName>(?<packageName>[^\\s#]+?)\\/actions\\/(?<actionName>[^@\\s]+))@(?<currentDigest>[a-f0-9]{40})\\s+#\\s+(?<currentValue>(?<actionTagPrefix>\\k<actionName>)\\/v(?<currentVersion>\\d+\\.\\d+\\.\\d+))"
+        "uses:\\s+(?<depName>(?<packageName>[A-Za-z0-9_.-]+\\/[A-Za-z0-9_.-]+)\\/actions\\/[A-Za-z0-9_.-]+)@(?<currentDigest>[a-f0-9]{40})\\s+#\\s+(?<currentValue>[A-Za-z0-9_.-]+\\/v(?<currentVersion>\\d+\\.\\d+\\.\\d+))"
       ],
       "autoReplaceStringTemplate": "uses: {{depName}}@{{newDigest}} # {{newValue}}",
       "datasourceTemplate": "github-tags",
-      "extractVersionTemplate": "^[^/]+\\/v(?<version>.*)$",
+      "extractVersionTemplate": "^[A-Za-z0-9_.-]+\\/v(?<version>.*)$",
       "versioningTemplate": "semver"
     }
   ],
