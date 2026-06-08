@@ -77,7 +77,7 @@
       "rangeStrategy": "bump"
     },
     {
-      "description": ["Skip NuGet package versions with explicit version ranges"],
+      "description": ["Skip pinned NuGet package versions"],
       "matchManagers": ["nuget"],
       "matchCurrentValue": "^\\[[^,]+,\\)$",
       "rangeStrategy": "widen"
