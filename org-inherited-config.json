@@ -72,9 +72,15 @@
       "addLabels": [".NET"]
     },
     {
-      "description": ["Skip pinned NuGet package versions"],
+      "description": ["Workaround for https://github.com/renovatebot/renovate/discussions/43794"],
       "matchManagers": ["nuget"],
-      "matchCurrentValue": "^\\[[^,]+,\\)$",
+      "matchCurrentValue": "^[^\\[(]",
+      "rangeStrategy": "bump"
+    },
+    {
+      "description": ["Skip NuGet package versions with explicit version ranges"],
+      "matchManagers": ["nuget"],
+      "matchCurrentValue": "^[\\[(]",
       "enabled": false
     },
     {
