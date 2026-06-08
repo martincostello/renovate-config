@@ -75,7 +75,7 @@
       "description": ["Skip pinned NuGet package versions"],
       "matchManagers": ["nuget"],
       "matchCurrentValue": "^\\[[^,]+,\\)$",
-      "matchNewValue": "^\\[[^,]+,\\)$",
+      "rangeStrategy": "auto",
       "enabled": false
     },
     {
