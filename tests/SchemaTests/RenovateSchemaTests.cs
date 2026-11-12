@@ -30,7 +30,7 @@ public static class RenovateSchemaTests
         using var client = new HttpClient();
         var schemaJson = await client.GetStringAsync(schemaUrl, cancellationToken);
         var schema = JSchema.Parse(
-            schemaJson,
+            PatchSchema(schemaJson),
             new JSchemaReaderSettings() { ValidateVersion = true });
 
         var configurationJson = await File.ReadAllTextAsync(configurationFile, cancellationToken);
@@ -73,6 +73,29 @@ public static class RenovateSchemaTests
                 }
             }
         }
+    }
+
+    private static string PatchSchema(string schemaJson)
+    {
+        // TODO Remove once the version of Renovate that is deployed is 44.232.0 or later.
+        // The published schema is generated from the latest Renovate release, where "dependencyDashboard"
+        // was changed from a boolean to an object (https://github.com/renovatebot/renovate/pull/47732).
+        // Older versions of Renovate still require a boolean and reject the object form, so accept both.
+        // See https://github.com/open-telemetry/opentelemetry-dotnet-contrib/issues/5971.
+        var schema = JObject.Parse(schemaJson);
+
+        if (schema["properties"] is JObject properties &&
+            properties["dependencyDashboard"] is JObject dependencyDashboard)
+        {
+            properties["dependencyDashboard"] = new JObject
+            {
+                ["anyOf"] = new JArray(
+                    new JObject { ["type"] = "boolean" },
+                    dependencyDashboard),
+            };
+        }
+
+        return schema.ToString();
     }
 
     private static void AssertDescriptions(JToken token, string path)
